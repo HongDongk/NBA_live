@@ -4,11 +4,13 @@
 import { createContext, ReactNode, useState } from 'react';
 
 export const TabContext = createContext({
-  tab: 'recommend', // 기본값
+  tab: 'recommend',
   setTab: (value: 'recommend' | 'follow') => {},
 });
 
-export default function TabProvider({ children }: { children: ReactNode }) {
+type Props = { children: ReactNode };
+export default function TabProvider({ children }: Props) {
   const [tab, setTab] = useState('recommend');
+
   return <TabContext.Provider value={{ tab, setTab }}>{children}</TabContext.Provider>;
 }

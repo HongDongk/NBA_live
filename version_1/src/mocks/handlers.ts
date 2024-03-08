@@ -10,8 +10,8 @@ function generateDate() {
   });
 }
 const User = [
-  { id: 'elonmusk', nickname: 'Elon Musk', image: '/yRsRRjGO.jpg' },
-  { id: 'zerohch0', nickname: '제로초', image: '/5Udwvqim.jpg' },
+  { id: 'elonmusk', nickname: 'Elon Musk', image: faker.image.avatar() },
+  { id: 'zerohch0', nickname: '제로초', image: faker.image.avatar() },
   { id: 'leoturtle', nickname: '레오', image: faker.image.avatar() },
 ];
 const Posts = [];
@@ -44,6 +44,7 @@ export const handlers = [
       },
     });
   }),
+  // 게시글 가져오기
   http.get('/api/postRecommends', ({ request }) => {
     const url = new URL(request.url);
     const cursor = parseInt(url.searchParams.get('cursor') as string) || 0;
@@ -97,6 +98,7 @@ export const handlers = [
       },
     ]);
   }),
+  // 팔로우포스트 가져오기
   http.get('/api/followingPosts', ({ request }) => {
     return HttpResponse.json([
       {
@@ -136,6 +138,7 @@ export const handlers = [
       },
     ]);
   }),
+  // 검색결과 가져오기
   http.get('/api/search/:tag', ({ request, params }) => {
     const { tag } = params;
     return HttpResponse.json([
@@ -176,6 +179,7 @@ export const handlers = [
       },
     ]);
   }),
+  // 유저 게시글 가져오기
   http.get('/api/users/:userId/posts', ({ request, params }) => {
     const { userId } = params;
     return HttpResponse.json([
@@ -216,6 +220,7 @@ export const handlers = [
       },
     ]);
   }),
+  // 유저정보가져오기
   http.get('/api/users/:userId', ({ request, params }): StrictResponse<any> => {
     const { userId } = params;
     const found = User.find((v) => v.id === userId);
@@ -229,6 +234,7 @@ export const handlers = [
       }
     );
   }),
+  // 게시글 가져오기
   http.get('/api/posts/:postId', ({ request, params }): StrictResponse<any> => {
     const { postId } = params;
     if (parseInt(postId as string) > 10) {
@@ -251,6 +257,7 @@ export const handlers = [
       createdAt: generateDate(),
     });
   }),
+  // 유저 게시글 답글 가져오기
   http.get('/api/posts/:postId/comments', ({ request, params }) => {
     const { postId } = params;
     return HttpResponse.json([
@@ -291,9 +298,11 @@ export const handlers = [
       },
     ]);
   }),
+  // 팔로우추천대상
   http.get('/api/followRecommends', ({ request }) => {
     return HttpResponse.json(User);
   }),
+  // 트렌드가져오기
   http.get('/api/trends', ({ request }) => {
     return HttpResponse.json([
       { tagId: 1, title: '제로초', count: 1264 },

@@ -1,0 +1,48 @@
+.modalBackground {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal {
+  background: #ffffff;
+  position: relative;
+  top: 15%;
+  max-width: 80vw;
+  min-width: 600px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  height: 550px;
+}
+
+.modalHeader {
+  padding: 50px 30px;
+  font-size: 31px;
+  font-weight: bold;
+}
+
+.closeButton {
+  width: 50px;
+  height: 50px;
+  border-radius: 17px;
+  border: none;
+  cursor: pointer;
+  background-color: #fff;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.closeButton:hover {
+  background-color: rgba(15, 20, 25, 0.1);
+}

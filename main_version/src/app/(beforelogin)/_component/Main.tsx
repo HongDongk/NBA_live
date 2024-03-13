@@ -1,4 +1,5 @@
-'use client'; // 클리언트 컴포넌트로 설정하기 => react 훅 쓸 수 있게 함!
+// 클라이언트에서 로그인하기 (서버액션 X)
+'use client';
 
 import { ChangeEventHandler, FormEventHandler, useState } from 'react';
 import { redirect, useRouter } from 'next/navigation';
@@ -6,6 +7,7 @@ import styles from './main.module.css';
 import Image from 'next/image';
 import mainimg from '../../../../public/mainimg.png';
 import Link from 'next/link';
+import { signIn } from 'next-auth/react'; // 클라이언트에서 처리할 때는 next-auth/react사용 (서버액션X)
 
 export default function Main() {
   const [id, setId] = useState('');
@@ -19,7 +21,18 @@ export default function Main() {
       setMessage('올바른 형식을 입력해주세요');
       return;
     }
-    router.replace('/home'); // router.replace : 뒤로가기 누르면 전전페이지로 돌아감(로그인시 유용)
+    setMessage('');
+    try {
+      await signIn('credentials', {
+        username: id,
+        password,
+        redirect: false, // 클라이언트로 할꺼니깐 서버 redirect X
+      });
+      router.replace('/home'); // router.replace : 뒤로가기 누르면 전전페이지로 돌아감(로그인시 유용)
+    } catch (err) {
+      console.error(err);
+      setMessage('아이디와 비밀번호가 일치하지 않습니다.');
+    }
   };
 
   const onChangeId: ChangeEventHandler<HTMLInputElement> = (e) => {

@@ -1,3 +1,3 @@
 export default async function Home() {
-  return <div>시시발</div>;
+  return <div>홈페이지</div>;
 }

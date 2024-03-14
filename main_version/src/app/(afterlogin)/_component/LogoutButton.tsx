@@ -3,6 +3,7 @@
 import style from './logoutButton.module.css';
 import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function LogoutButton() {
   const router = useRouter();
@@ -15,7 +16,13 @@ export default function LogoutButton() {
   };
 
   if (!me?.user) {
-    return null;
+    return (
+      <button className={style.logOutButton} onClick={onLogout}>
+        <span>
+          <Link href={'/'}>로그인 하러가기</Link>
+        </span>
+      </button>
+    );
   }
 
   return (

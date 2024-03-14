@@ -20,11 +20,11 @@
   border-radius: 16px;
   display: flex;
   flex-direction: column;
-  height: 550px;
+  height: 570px;
 }
 
 .modalHeader {
-  padding: 50px 30px;
+  padding: 40px 30px;
   font-size: 31px;
   font-weight: bold;
 }
@@ -45,4 +45,50 @@
 }
 .closeButton:hover {
   background-color: rgba(15, 20, 25, 0.1);
+}
+
+.modalBody {
+  width: 100%;
+  padding: 0 20px;
+}
+
+.inputLabel {
+  margin-top: 10px;
+  width: 100%;
+  display: inline-block;
+  color: black;
+  font-weight: bold;
+  font-size: 13px;
+  padding-top: 10px;
+}
+
+.input {
+  border-radius: 5px;
+  width: 80%;
+  height: 13px;
+  font-size: 15px;
+  margin-top: 5px;
+  padding: 16px;
+  outline: none;
+  border: 0.5px solid #bdbdbd;
+}
+
+.modalFooter {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.actionButton {
+  width: 60%;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #4a5cff;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+  border: none;
+}
+.actionButton:hover {
+  background-color: #311b92;
 }

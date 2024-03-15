@@ -1,3 +1,23 @@
+import Post from '../_component/Post';
+import PostForm from './_component/PostForm';
+import Tab from './_component/Tab';
+import TabProvider from './_component/TabProvider';
+import style from './home.module.css';
+
 export default async function Home() {
-  return <div>홈</div>;
+  return (
+    <div className={style.main}>
+      <TabProvider>
+        <Tab />
+        <PostForm />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+      </TabProvider>
+    </div>
+  );
 }

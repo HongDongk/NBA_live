@@ -22,7 +22,7 @@ export default function Profile({ params }: Props) {
       </div>
       <div className={style.userZone}>
         <div className={style.userImage}>
-          <img src={me.user?.image} alt={me.user?.name} />
+          <img src={me.user?.image as string} alt={me.user?.name as string} />
         </div>
         <div className={style.userName}>
           <div>{me.user?.name}</div>

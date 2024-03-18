@@ -6,6 +6,9 @@ import Image from 'next/image';
 import MainLogo from '../../../public/logo.png';
 import LogoutButton from '@/app/(afterlogin)/_component/LogoutButton';
 import NavMenu from './_component/NavMenu';
+import RightSearchZone from './_component/RightSearchZone';
+import TrendSection from './_component/TrendSection';
+import FollowRecommend from './_component/FollowRecommend';
 
 type Props = { children: ReactNode; modal: ReactNode };
 
@@ -24,7 +27,17 @@ export default async function AfterLoginLayout({ children, modal }: Props) {
         </Link>
         <LogoutButton />
       </header>
-      {children}
+      <div className={style.leftSectionWrapper}>임시왼쪽컨텐츠</div>
+      <div className={style.middleSectionWrapper}>{children}</div>
+      <div className={style.rightSectionWrapper}>
+        <RightSearchZone />
+        <TrendSection />
+        <div className={style.followRecommend}>
+          <h3>팔로우 추천</h3>
+          <FollowRecommend />
+          <FollowRecommend />
+        </div>
+      </div>
     </div>
   );
 }

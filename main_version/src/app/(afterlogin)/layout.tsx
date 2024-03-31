@@ -38,6 +38,7 @@ export default async function AfterLoginLayout({ children, modal }: Props) {
           <FollowRecommend />
         </div>
       </div>
+      {modal}
     </div>
   );
 }
